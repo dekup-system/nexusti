@@ -1,6 +1,6 @@
 {
-  "name": "NexusTI — NetGuard AI",
-  "short_name": "NexusTI",
+  "name": "NexIA Core",
+  "short_name": "NexIA Core",
   "description": "Inteligência de rede local: descoberta, topologia, auditoria e diagnóstico.",
   "start_url": "/",
   "display": "standalone",

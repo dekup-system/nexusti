@@ -1,4 +1,4 @@
-/* NexusTI — interações leves, sem dependências */
+/* NexIA Core — interações leves, sem dependências */
 (function () {
   "use strict";
 
@@ -92,19 +92,19 @@
   const tabs = $$("[data-tab]");
   const content = {
     dashboard: {
-      title: "NexusTI · dashboard",
+      title: "NexIA Core · dashboard",
       heading: "A rede em uma tela.",
       text: "Ativos, achados, postura e identidade. O resumo que a equipe abre primeiro — e entende sem treinamento.",
       list: ["Postura por severidade e camada OSI", "Identidade, DNS, DHCP e Active Directory", "Prioridades do dia e atalhos de ação"],
     },
     security: {
-      title: "NexusTI · segurança",
+      title: "NexIA Core · segurança",
       heading: "Verificação que não invade.",
       text: "Checagem passiva de exposição sobre os ativos já descobertos, com evidência e recomendação para a equipe aplicar.",
       list: ["SMBv1, Telnet, RDP, SNMP e HTTP admin", "Sem exploit, força bruta ou alteração", "Relatório PDF, CSV e JSON"],
     },
     route: {
-      title: "NexusTI · rota",
+      title: "NexIA Core · rota",
       heading: "O caminho até o problema.",
       text: "Gateway, DNS, TCP e HTTPS em sequência. O traceroute mostra o salto onde a conexão para de responder.",
       list: ["Diagnóstico de internet em segundos", "Rota salto a salto com latência", "Evidência pronta para o chamado"],
@@ -157,7 +157,7 @@
     const mailtoBase = "mailto:mtresdsistemas@gmail.com";
     const fallback = (data) => {
       const body = [
-        "Solicitação de demonstração — NexusTI",
+        "Solicitação de demonstração — NexIA Core",
         "",
         `Nome: ${data.name || ""}`,
         `E-mail: ${data.email || ""}`,
@@ -168,7 +168,7 @@
         "Necessidade:",
         data.message || "",
       ].join("\n");
-      const url = `${mailtoBase}?subject=${encodeURIComponent("Demonstração NexusTI — " + (data.company || data.name || "site"))}&body=${encodeURIComponent(body)}`;
+      const url = `${mailtoBase}?subject=${encodeURIComponent("Demonstração NexIA Core — " + (data.company || data.name || "site"))}&body=${encodeURIComponent(body)}`;
       status.className = "form-status is-error";
       status.innerHTML = `Não foi possível enviar agora. <a href="${url}">Enviar por e-mail</a> ou tente novamente.`;
     };
@@ -216,15 +216,15 @@
   const legal = {
     privacidade: {
       title: "Privacidade",
-      body: "<p>O produto NexusTI opera localmente. Não enviamos inventário, topologia, credenciais ou achados para servidores externos.</p><p>Os dados do produto ficam no banco SQLite da própria máquina, em <code>data/</code>, e os relatórios são gerados localmente. O assistente de IA usa um modelo local via Ollama; nenhuma pergunta é enviada para a nuvem.</p><p>Este site não usa analytics. Quando você envia o formulário de contato, nome, e-mail, empresa e mensagem são usados apenas para responder à solicitação e podem transitar pela Vercel e pelo provedor de e-mail configurado.</p>",
+      body: "<p>O produto NexIA Core opera localmente. Não enviamos inventário, topologia, credenciais ou achados para servidores externos.</p><p>Os dados do produto ficam no banco SQLite da própria máquina, em <code>data/</code>, e os relatórios são gerados localmente. O assistente de IA usa um modelo local via Ollama; nenhuma pergunta é enviada para a nuvem.</p><p>Este site não usa analytics. Quando você envia o formulário de contato, nome, e-mail, empresa e mensagem são usados apenas para responder à solicitação e podem transitar pela Vercel e pelo provedor de e-mail configurado.</p>",
     },
     termos: {
       title: "Termos de uso",
-      body: "<p>O NexusTI é uma ferramenta de observação e auditoria. O uso deve ser autorizado pelo responsável pela rede e limitado ao escopo declarado.</p><p>O produto não executa exploração de falhas, força bruta, negação de serviço ou alteração automática de configuração. As recomendações devem ser aplicadas pela equipe responsável, com janela e rollback.</p><p>A licença é vinculada à máquina e válida pelo prazo emitido.</p>",
+      body: "<p>O NexIA Core é uma ferramenta de observação e auditoria. O uso deve ser autorizado pelo responsável pela rede e limitado ao escopo declarado.</p><p>O produto não executa exploração de falhas, força bruta, negação de serviço ou alteração automática de configuração. As recomendações devem ser aplicadas pela equipe responsável, com janela e rollback.</p><p>A licença é vinculada à máquina e válida pelo prazo emitido.</p>",
     },
     licenca: {
       title: "Licença",
-      body: "<p>O NexusTI oferece um período de avaliação de 7 dias. Após esse prazo, a ativação é feita por licença local assinada (Ed25519), vinculada à máquina.</p><p>A ativação é offline: você importa o arquivo <code>.lic</code> na tela de ativação. Não há servidor de licença nem validação online.</p>",
+      body: "<p>O NexIA Core oferece um período de avaliação de 7 dias. Após esse prazo, a ativação é feita por licença local assinada (Ed25519), vinculada à máquina.</p><p>A ativação é offline: você importa o arquivo <code>.lic</code> na tela de ativação. Não há servidor de licença nem validação online.</p>",
     },
   };
   const openLegal = (key) => {

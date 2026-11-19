@@ -4,7 +4,7 @@
  * Variáveis na Vercel:
  *   RESEND_API_KEY   chave da Resend
  *   LEAD_TO          destinatário (pode separar por vírgula)
- *   LEAD_FROM        remetente verificado, ex. "NexusTI <contato@seudominio.com>"
+ *   LEAD_FROM        remetente verificado, ex. "NexIA Core <contato@seudominio.com>"
  *   LEAD_WEBHOOK_URL opcional: recebe o JSON em vez de e-mail
  *
  * Sem configuração, responde 503; a página oferece o fallback por e-mail.
@@ -104,7 +104,7 @@ module.exports = async function handler(req, res) {
 
   const key = process.env.RESEND_API_KEY;
   const to = (process.env.LEAD_TO || "").split(",").map((item) => item.trim()).filter(Boolean);
-  const from = process.env.LEAD_FROM || "NexusTI <onboarding@resend.dev>";
+  const from = process.env.LEAD_FROM || "NexIA Core <onboarding@resend.dev>";
   if (!key || !to.length) {
     res.status(503).json({
       error: "Formulário ainda não configurado.",
@@ -127,7 +127,7 @@ module.exports = async function handler(req, res) {
   ];
   const html = `
     <div style="font-family:Segoe UI,Arial,sans-serif;background:#0c0b08;color:#f1e6d7;padding:24px">
-      <h2 style="margin:0 0 16px;color:#c49a6c">Nova solicitação — NexusTI</h2>
+      <h2 style="margin:0 0 16px;color:#c49a6c">Nova solicitação — NexIA Core</h2>
       <table style="border-collapse:collapse;font-size:14px">
         ${[
           ["Nome", lead.name], ["E-mail", lead.email], ["Empresa", lead.company],
@@ -151,7 +151,7 @@ module.exports = async function handler(req, res) {
         from,
         to,
         reply_to: lead.email,
-        subject: `Demonstração NexusTI — ${lead.company}`,
+        subject: `Demonstração NexIA Core — ${lead.company}`,
         text: lines.join("\n"),
         html,
       }),

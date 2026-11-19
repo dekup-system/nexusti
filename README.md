@@ -1,6 +1,6 @@
-# NexusTI — landing page
+# NexIA Core — landing page
 
-Site institucional estático do **NexusTI / NetGuard AI**, feito para importar direto na Vercel.
+Site institucional estático do **NexIA Core / Inteligência de rede**, feito para importar direto na Vercel.
 
 ## Stack
 
@@ -19,7 +19,7 @@ Abra `http://127.0.0.1:8088`.
 
 ## Publicar na Vercel
 
-1. Importe o repositório `dekup-system/nexusti` na Vercel.
+1. Importe o repositório `repositório do projeto` na Vercel.
 2. Framework preset: **Other**.
 3. Build command: vazio.
 4. Output directory: `.` (raiz).
@@ -58,7 +58,7 @@ O `vercel.json` já define `cleanUrls` e cache longo para `/assets`.
 ## Imagens
 
 - `assets/img/hero.jpg` e `assets/img/topology.jpg`: geradas com **FLUX.1-schnell** (Hugging Face) para esta página, com prompts de rede, bronze e fundo escuro.
-- `assets/shots/*`: capturas reais do produto NexusTI.
+- `assets/shots/*`: capturas reais do produto NexIA Core.
 - Logomarca e favicon: ativos oficiais da marca.
 
 ## Conteúdo
@@ -93,7 +93,7 @@ Na Vercel, configure em **Settings → Environment Variables**:
 |---|---|---|
 | `RESEND_API_KEY` | sim (para e-mail) | chave da [Resend](https://resend.com) |
 | `LEAD_TO` | sim | destinatário; aceita vírgula |
-| `LEAD_FROM` | recomendada | remetente verificado, ex. `NexusTI <contato@seudominio.com>` |
+| `LEAD_FROM` | recomendada | remetente verificado, ex. `NexIA Core <contato@seudominio.com>` |
 | `LEAD_WEBHOOK_URL` | opcional | se definido, envia o JSON para um webhook em vez de e-mail |
 
 Sem `RESEND_API_KEY`/`LEAD_TO`, a API responde **503** e a página oferece o
@@ -105,4 +105,4 @@ e-mail. Para testar o endpoint, use `vercel dev` com as variáveis acima.
 
 ## Licença
 
-Conteúdo e marca NexusTI. Código da landing page disponibilizado para uso do projeto.
+Conteúdo e marca NexIA Core. Código da landing page disponibilizado para uso do projeto.
