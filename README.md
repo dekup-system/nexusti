@@ -35,6 +35,9 @@ O `vercel.json` já define `cleanUrls` e cache longo para `/assets`.
 ├── styles.css
 ├── script.js
 ├── vercel.json
+├── package.json
+├── api/
+│   └── download.js
 ├── robots.txt
 ├── site.webmanifest
 ├── assets/
@@ -87,7 +90,7 @@ Web3Forms, sem função na Vercel:
 - access key pública configurada no formulário;
 - destinatário: e-mail cadastrado na conta Web3Forms;
 - sucesso: redireciona para `/#obrigado`;
-- erro de rede: oferece fallback por e-mail.
+- o Web3Forms exibe a página de erro/validação quando o envio falha.
 
 Para trocar o destinatário, altere o e-mail na conta Web3Forms — não é necessário
 mexer no código.
@@ -96,6 +99,24 @@ mexer no código.
 
 `/#obrigado` exibe a confirmação em tela cheia, com retorno ao site. O formulário
 faz `history.pushState` para essa URL após o envio bem-sucedido.
+
+## Download do trial
+
+O botão **Baixar Trial** aponta para `/api/download`, que gera uma URL assinada
+do R2 por 1 hora. O bucket pode permanecer privado.
+
+Configure na Vercel:
+
+| Variável | Valor |
+|---|---|
+| `R2_ACCOUNT_ID` | `0a94cfefc7f57c57da1d8d1ab1b35b59` |
+| `R2_ACCESS_KEY_ID` | access key do R2 |
+| `R2_SECRET_ACCESS_KEY` | secret do R2 |
+| `R2_BUCKET` | `nexiacore` |
+| `R2_KEY` | `NexIA-Core-Setup-1.0.0.exe` |
+
+O instalador está no bucket `nexiacore`, objeto
+`NexIA-Core-Setup-1.0.0.exe` (28,9 MB).
 
 ## Licença
 
