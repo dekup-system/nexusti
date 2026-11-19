@@ -35,6 +35,9 @@ O `vercel.json` já define `cleanUrls` e cache longo para `/assets`.
 ├── styles.css
 ├── script.js
 ├── vercel.json
+├── .env.example
+├── api/
+│   └── lead.js
 ├── robots.txt
 ├── site.webmanifest
 ├── assets/
@@ -48,6 +51,7 @@ O `vercel.json` já define `cleanUrls` e cache longo para `/assets`.
 │   └── shots/             # capturas reais do produto
 └── docs/
     ├── preview-desktop.jpg
+    ├── preview-form.jpg
     └── preview-mobile.jpg
 ```
 
@@ -67,15 +71,37 @@ A página apresenta:
 - relatórios PDF/CSV/JSON;
 - limites de escopo e princípios de operação;
 - trial de 7 dias e licença local assinada;
-- públicos: TI interna, universidades e consultorias;
+- públicos: TI interna, empresas e consultorias;
 - contato e FAQ.
 
 ## Ajustes antes de publicar
 
 - Troque o `canonical` e o `og:url` pelo domínio final.
 - Confirme o e-mail de contato em `index.html` (`mtresdsistemas@gmail.com`).
-- Se quiser um formulário real, conecte o botão de demonstração a um serviço (Formspree, Resend, HubSpot etc.).
-- A página não coleta dados nem usa analytics por padrão.
+- O formulário envia para `/api/lead`; configure `RESEND_API_KEY` e `LEAD_TO` na Vercel (veja abaixo). Sem configuração, ele oferece fallback por e-mail.
+- A página não usa analytics por padrão.
+
+## Formulário de contato
+
+A seção **Contato** tem um formulário que envia para `POST /api/lead`
+(`api/lead.js`), com validação no cliente e no servidor, honeypot e limite
+simples de requisições.
+
+Na Vercel, configure em **Settings → Environment Variables**:
+
+| Variável | Obrigatória | Função |
+|---|---|---|
+| `RESEND_API_KEY` | sim (para e-mail) | chave da [Resend](https://resend.com) |
+| `LEAD_TO` | sim | destinatário; aceita vírgula |
+| `LEAD_FROM` | recomendada | remetente verificado, ex. `NexusTI <contato@seudominio.com>` |
+| `LEAD_WEBHOOK_URL` | opcional | se definido, envia o JSON para um webhook em vez de e-mail |
+
+Sem `RESEND_API_KEY`/`LEAD_TO`, a API responde **503** e a página oferece o
+fallback por e-mail com os dados preenchidos — o formulário nunca “engole” a
+mensagem.
+
+Para testar localmente, rode apenas o estático: o envio cai no fallback de
+e-mail. Para testar o endpoint, use `vercel dev` com as variáveis acima.
 
 ## Licença
 

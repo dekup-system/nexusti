@@ -149,6 +149,64 @@
     }
   }
 
+  /* ------------------------------------------------------------ formulário */
+  const leadForm = $("#leadForm");
+  if (leadForm) {
+    const status = $("#formStatus");
+    const submit = $("#leadSubmit");
+    const mailtoBase = "mailto:mtresdsistemas@gmail.com";
+    const fallback = (data) => {
+      const body = [
+        "Solicitação de demonstração — NexusTI",
+        "",
+        `Nome: ${data.name || ""}`,
+        `E-mail: ${data.email || ""}`,
+        `Empresa: ${data.company || ""}`,
+        `Cargo: ${data.role || ""}`,
+        `Rede: ${data.network || ""}`,
+        "",
+        "Necessidade:",
+        data.message || "",
+      ].join("\n");
+      const url = `${mailtoBase}?subject=${encodeURIComponent("Demonstração NexusTI — " + (data.company || data.name || "site"))}&body=${encodeURIComponent(body)}`;
+      status.className = "form-status is-error";
+      status.innerHTML = `Não foi possível enviar agora. <a href="${url}">Enviar por e-mail</a> ou tente novamente.`;
+    };
+
+    leadForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!leadForm.reportValidity()) return;
+      const data = Object.fromEntries(new FormData(leadForm).entries());
+      if (data.website) return; // honeypot
+      submit.disabled = true;
+      status.className = "form-status";
+      status.textContent = "Enviando…";
+      try {
+        const response = await fetch("/api/lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(data),
+        });
+        let payload = {};
+        try { payload = await response.json(); } catch (_) { /* resposta não JSON */ }
+        if (response.ok && payload.ok) {
+          leadForm.reset();
+          status.className = "form-status is-ok";
+          status.textContent = "Recebido. Retornamos em até 1 dia útil para agendar a demonstração.";
+        } else if ([404, 501, 503].includes(response.status)) {
+          fallback(data);
+        } else {
+          status.className = "form-status is-error";
+          status.textContent = payload.error || "Não foi possível enviar. Tente novamente em instantes.";
+        }
+      } catch (_) {
+        fallback(data);
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  }
+
   /* ------------------------------------------------------------ ano */
   const year = $("#year");
   if (year) year.textContent = String(new Date().getFullYear());
@@ -158,7 +216,7 @@
   const legal = {
     privacidade: {
       title: "Privacidade",
-      body: "<p>O NexusTI opera localmente. Não enviamos inventário, topologia, credenciais ou achados para servidores externos.</p><p>Os dados ficam no banco SQLite da própria máquina, em <code>data/</code>, e os relatórios são gerados localmente. O assistente de IA usa um modelo local via Ollama; nenhuma pergunta é enviada para a nuvem.</p><p>O contato por e-mail é usado apenas para responder à sua solicitação.</p>",
+      body: "<p>O produto NexusTI opera localmente. Não enviamos inventário, topologia, credenciais ou achados para servidores externos.</p><p>Os dados do produto ficam no banco SQLite da própria máquina, em <code>data/</code>, e os relatórios são gerados localmente. O assistente de IA usa um modelo local via Ollama; nenhuma pergunta é enviada para a nuvem.</p><p>Este site não usa analytics. Quando você envia o formulário de contato, nome, e-mail, empresa e mensagem são usados apenas para responder à solicitação e podem transitar pela Vercel e pelo provedor de e-mail configurado.</p>",
     },
     termos: {
       title: "Termos de uso",

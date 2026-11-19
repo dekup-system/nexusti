@@ -137,7 +137,7 @@
       <div class="container strip__inner">
         <p>Feito para quem não pode parar</p>
         <ul>
-          <li>Universidades</li>
+          <li>Corporações</li>
           <li>Hospitais</li>
           <li>Indústrias</li>
           <li>Provedores</li>
@@ -258,7 +258,7 @@
 
           <article class="bento-card reveal">
             <span class="tag">Relatórios</span>
-            <h3>Pronto para a reitoria.</h3>
+            <h3>Pronto para a diretoria.</h3>
             <p>Relatórios executivos em PDF, CSV e JSON. Postura, achados, evidências e prioridades em linguagem que a gestão entende.</p>
             <div class="format-row"><span>PDF</span><span>CSV</span><span>JSON</span></div>
           </article>
@@ -426,7 +426,7 @@
         </div>
         <div class="audience__grid">
           <article class="audience-card reveal"><span class="tag">TI interna</span><h3>Menos tempo apagando incêndio.</h3><p>Inventário, postura e diagnóstico em um só lugar. A equipe chega ao problema com evidência, não com tentativa.</p></article>
-          <article class="audience-card reveal"><span class="tag">Universidades</span><h3>Visibilidade sobre o campus.</h3><p>Múltiplas VLANs, laboratórios, impressoras e dispositivos legados. Relatórios que a gestão entende e a TI consegue executar.</p></article>
+          <article class="audience-card reveal"><span class="tag">Redes corporativas</span><h3>Visibilidade sobre a operação.</h3><p>Múltiplas VLANs, filiais, impressoras e dispositivos legados. Relatórios que a gestão entende e a TI consegue executar.</p></article>
           <article class="audience-card reveal"><span class="tag">Consultorias</span><h3>Um diagnóstico que se apresenta.</h3><p>Levantamento rápido, escopo controlado e relatório executivo para entregar ao cliente no mesmo dia.</p></article>
         </div>
       </div>
@@ -498,14 +498,56 @@
     <section class="cta" id="contato">
       <div class="cta__media" aria-hidden="true"><img src="assets/img/hero.jpg" alt="" loading="lazy" /></div>
       <div class="container cta__inner">
-        <p class="kicker">Próximo passo</p>
-        <h2>Coloque a sua rede<br /><em>na mesma tela.</em></h2>
-        <p>Demonstração guiada, escopo controlado e leitura dos seus primeiros achados. Sem instalar agente e sem compromisso.</p>
-        <div class="cta__actions">
-          <a class="btn btn--primary" href="mailto:mtresdsistemas@gmail.com?subject=Demonstra%C3%A7%C3%A3o%20NexusTI&body=Ol%C3%A1%2C%20quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20NexusTI.%0A%0AInstitui%C3%A7%C3%A3o%3A%0ARede%2Fsegmentos%3A%0ANecessidade%3A">Solicitar demonstração <svg class="icon"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn--ghost" href="mailto:mtresdsistemas@gmail.com?subject=Licen%C3%A7a%20NexusTI">Falar sobre licença</a>
+        <div class="cta__grid">
+          <div class="cta__copy">
+            <p class="kicker">Próximo passo</p>
+            <h2>Coloque a sua rede<br /><em>na mesma tela.</em></h2>
+            <p>Demonstração guiada, escopo controlado e leitura dos primeiros achados. Sem instalar agente e sem compromisso.</p>
+            <ul class="cta__points">
+              <li><svg class="icon"><use href="#i-check"/></svg> 30 minutos, online</li>
+              <li><svg class="icon"><use href="#i-check"/></svg> Escopo e janela definidos com a sua equipe</li>
+              <li><svg class="icon"><use href="#i-check"/></svg> Resposta em até 1 dia útil</li>
+            </ul>
+            <p class="cta__small">Prefere e-mail? <a href="mailto:mtresdsistemas@gmail.com?subject=Demonstra%C3%A7%C3%A3o%20NexusTI">mtresdsistemas@gmail.com</a></p>
+          </div>
+
+          <div class="lead-card">
+            <div class="lead-card__head">
+              <span class="tag">Contato</span>
+              <h3>Solicitar demonstração</h3>
+              <p>Conte um pouco sobre a sua operação. Retornamos com uma agenda.</p>
+            </div>
+            <form id="leadForm" class="lead-form" action="/api/lead" method="post">
+              <div class="form-row">
+                <label class="field"><span>Nome *</span><input class="input" name="name" autocomplete="name" required maxlength="120" /></label>
+                <label class="field"><span>E-mail corporativo *</span><input class="input" name="email" type="email" autocomplete="email" required maxlength="160" /></label>
+              </div>
+              <div class="form-row">
+                <label class="field"><span>Empresa *</span><input class="input" name="company" autocomplete="organization" required maxlength="140" /></label>
+                <label class="field"><span>Cargo</span><input class="input" name="role" autocomplete="organization-title" maxlength="100" /></label>
+              </div>
+              <label class="field"><span>Tamanho da rede</span>
+                <select class="select" name="network">
+                  <option value="">Selecione</option>
+                  <option>Até 100 dispositivos</option>
+                  <option>100–500 dispositivos</option>
+                  <option>500–2.000 dispositivos</option>
+                  <option>Mais de 2.000 dispositivos</option>
+                  <option>Múltiplas filiais</option>
+                </select>
+              </label>
+              <label class="field"><span>O que você precisa enxergar?</span>
+                <textarea class="textarea" name="message" rows="3" maxlength="1200" placeholder="Ex.: inventário de VLANs, postura de segurança, diagnóstico de internet…"></textarea>
+              </label>
+              <label class="consent"><input type="checkbox" name="consent" required /> Concordo em ser contatado sobre o NexusTI e li a <a href="#" data-legal="privacidade">política de privacidade</a>.</label>
+              <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <input type="hidden" name="source" value="landing" />
+              <button class="btn btn--primary lead-form__submit" type="submit" id="leadSubmit">Enviar solicitação <svg class="icon"><use href="#i-arrow"/></svg></button>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+              <p class="form-note">Seus dados são usados apenas para responder a este contato. Sem newsletter.</p>
+            </form>
+          </div>
         </div>
-        <p class="cta__small">Resposta em até 1 dia útil · atendimento em português</p>
       </div>
     </section>
   </main>
