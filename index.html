@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NexusTI — Inteligência de rede local | NetGuard AI</title>
+  <meta name="description" content="Descoberta, topologia, auditoria de postura e diagnóstico de rede em um único painel local. IA privada, operação somente leitura e relatórios executivos. Conheça o NexusTI." />
+  <meta name="theme-color" content="#080706" />
+  <link rel="canonical" href="https://nexusti.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="NexusTI" />
+  <meta property="og:url" content="https://nexusti.vercel.app/" />
+  <meta property="og:title" content="NexusTI — A rede inteira. Sob controle." />
+  <meta property="og:description" content="Descoberta, auditoria e diagnóstico de rede com IA local. Sem nuvem, sem exposição desnecessária." />
+  <meta property="og:image" content="https://nexusti.vercel.app/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NexusTI — A rede inteira. Sob controle." />
+  <meta name="twitter:description" content="Descoberta, auditoria e diagnóstico de rede com IA local." />
+  <meta name="twitter:image" content="https://nexusti.vercel.app/assets/og.jpg" />
+  <link rel="icon" href="assets/favicon.png" sizes="any" />
+  <link rel="apple-touch-icon" href="assets/apple-touch.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NexusTI",
+    "alternateName": "NetGuard AI",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Windows 10, Windows 11",
+    "description": "Descoberta, topologia, auditoria de postura e diagnóstico de rede com IA local.",
+    "url": "https://nexusti.vercel.app/",
+    "publisher": { "@type": "Organization", "name": "NexusTI", "email": "mtresdsistemas@gmail.com" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-radar" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7a5 5 0 1 0 5 5"/><path d="M12 12l6-6"/><circle cx="12" cy="12" r="1.5"/></symbol>
+    <symbol id="i-topology" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.2 6h9.6M6.2 8l4.6 8M17.8 8l-4.6 8"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.4-3 7.5-7 9.5-4-2-7-5.1-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 9h6v6H9z"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7.5 7.8l3.3 8.4M16.5 7.8l-3.3 8.4"/></symbol>
+    <symbol id="i-report" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7M9 8h3"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="6" rx="2"/><rect x="4" y="14" width="16" height="6" rx="2"/><path d="M8 7h.01M8 17h.01M12 7h4M12 17h4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  </svg>
+
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header" id="topo">
+    <div class="container header__inner">
+      <a class="brand" href="#topo" aria-label="NexusTI — início">
+        <img class="brand__mark" src="assets/brand-mark.png" alt="" width="42" height="42" />
+        <span class="brand__type"><strong>NexusTI</strong><small>NETGUARD AI</small></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Navegação principal">
+        <a href="#plataforma">Plataforma</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#produto">Produto</a>
+        <a href="#seguranca">Segurança</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header__actions">
+        <a class="btn btn--small btn--primary" href="#contato">Solicitar demo <svg class="icon"><use href="#i-arrow"/></svg></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+          <svg class="icon"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="hero__media" aria-hidden="true">
+        <img src="assets/img/hero.jpg" alt="" fetchpriority="high" />
+      </div>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="pulse"></span> Inteligência de rede · operação local</p>
+          <h1>Enxergue a rede.<br /><em>Antes que ela falhe.</em></h1>
+          <p class="hero__lead">Descoberta, topologia, auditoria de postura e diagnóstico em um único painel. O NexusTI transforma dados dispersos em decisões — sem enviar a sua rede para a nuvem.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#contato">Solicitar demonstração <svg class="icon"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--ghost" href="#produto"><svg class="icon"><use href="#i-play"/></svg> Ver o produto</a>
+          </div>
+          <ul class="hero__proof" aria-label="Diferenciais">
+            <li><svg class="icon"><use href="#i-check"/></svg> 100% local</li>
+            <li><svg class="icon"><use href="#i-check"/></svg> IA privada</li>
+            <li><svg class="icon"><use href="#i-check"/></svg> Somente leitura por padrão</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual">
+          <div class="window window--hero" data-tilt>
+            <div class="window__bar"><span></span><span></span><span></span><small>NexusTI · painel local</small><i class="window__live">ao vivo</i></div>
+            <img src="assets/shots/dashboard-data.png" alt="Painel do NexusTI com visão geral da rede, postura de segurança e ativos descobertos" width="1440" height="1000" />
+          </div>
+          <div class="float-card float-card--ai">
+            <span class="float-card__icon"><svg class="icon"><use href="#i-ai"/></svg></span>
+            <div><strong>IA local</strong><small>Ollama · na sua máquina</small></div>
+            <span class="status-dot"></span>
+          </div>
+          <div class="float-card float-card--safe">
+            <span class="float-card__icon"><svg class="icon"><use href="#i-shield"/></svg></span>
+            <div><strong>Escopo protegido</strong><small>máx. /22 · sem exploits</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container hero__stats">
+        <div><strong data-count="4096">4.096</strong><span>hosts por varredura</span></div>
+        <div><strong data-count="21">21</strong><span>checagens de postura</span></div>
+        <div><strong>3</strong><span>formatos de relatório</span></div>
+        <div><strong>0</strong><span>dados enviados à nuvem</span></div>
+      </div>
+    </section>
+
+    <section class="strip">
+      <div class="container strip__inner">
+        <p>Feito para quem não pode parar</p>
+        <ul>
+          <li>Universidades</li>
+          <li>Hospitais</li>
+          <li>Indústrias</li>
+          <li>Provedores</li>
+          <li>Escritórios</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section problem" id="plataforma">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">O problema</p>
+          <h2>A rede cresceu.<br /><em>A visibilidade não.</em></h2>
+          <p class="section-head__lead">Em algum lugar entre a planilha, o switch e o chamado de “a internet caiu”, a sua equipe perde tempo tentando responder perguntas que deveriam estar na tela.</p>
+        </div>
+        <div class="problem__grid">
+          <article class="problem-card reveal">
+            <span class="problem-card__num">01</span>
+            <h3>Inventário espalhado</h3>
+            <p>Ativos em planilhas, VLANs sem dono e equipamentos que ninguém sabe que existem até pararem de responder.</p>
+          </article>
+          <article class="problem-card reveal">
+            <span class="problem-card__num">02</span>
+            <h3>Portas esquecidas</h3>
+            <p>SMBv1, Telnet, RDP exposto, SNMP público. Configurações antigas continuam abertas porque ninguém tem tempo de olhar.</p>
+          </article>
+          <article class="problem-card reveal">
+            <span class="problem-card__num">03</span>
+            <h3>Diagnóstico por tentativa</h3>
+            <p>“É o DNS?”, “É o firewall?”, “É a operadora?”. Sem rota, gateway e saída testados, o incidente vira achismo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pillars">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="kicker">A plataforma</p>
+            <h2>Quatro camadas.<br /><em>Uma rede inteira.</em></h2>
+          </div>
+          <p class="section-head__lead">Do primeiro pacote ao relatório executivo. O NexusTI conecta descoberta, mapa, auditoria e diagnóstico em um fluxo só.</p>
+        </div>
+        <div class="pillars__grid">
+          <article class="pillar reveal">
+            <span class="pillar__icon"><svg class="icon"><use href="#i-radar"/></svg></span>
+            <span class="pillar__num">01</span>
+            <h3>Descobrir</h3>
+            <p>ARP, ICMP, DNS, SNMP e TCP para encontrar estações, servidores, impressoras e ativos de rede. Modo passivo ou ativo, com escopo explícito.</p>
+            <ul><li>IPv4, VLANs e sub-redes</li><li>Sem SNMP no modo passivo</li><li>Limite de /22 por execução</li></ul>
+          </article>
+          <article class="pillar reveal">
+            <span class="pillar__icon"><svg class="icon"><use href="#i-topology"/></svg></span>
+            <span class="pillar__num">02</span>
+            <h3>Mapear</h3>
+            <p>Topologia, inventário e identidade dos ativos. Gateway, servidores DNS, DHCP e domínio em uma visão que a equipe entende.</p>
+            <ul><li>Mapa de conexões</li><li>Inventário com fabricante e SO</li><li>Organograma e responsáveis</li></ul>
+          </article>
+          <article class="pillar reveal">
+            <span class="pillar__icon"><svg class="icon"><use href="#i-shield"/></svg></span>
+            <span class="pillar__num">03</span>
+            <h3>Auditar</h3>
+            <p>Postura de segurança baseada em evidências: serviços legados, exposição, TLS e configurações de risco — com recomendação e comando.</p>
+            <ul><li>Severidade e confiança</li><li>Camada OSI e evidência</li><li>Plano de remediação</li></ul>
+          </article>
+          <article class="pillar reveal">
+            <span class="pillar__icon"><svg class="icon"><use href="#i-route"/></svg></span>
+            <span class="pillar__num">04</span>
+            <h3>Diagnosticar</h3>
+            <p>Gateway, DNS, TCP, HTTPS e traceroute. Descubra em segundos se o problema é local, de saída, de DNS ou de aplicação.</p>
+            <ul><li>Diagnóstico de internet</li><li>Rota salto a salto</li><li>PDF, CSV e JSON</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bento" id="recursos">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="kicker">Recursos</p>
+            <h2>Profundidade<br /><em>sem complexidade.</em></h2>
+          </div>
+          <p class="section-head__lead">Cada recurso existe para responder uma pergunta real de operação. Nada de dashboard bonito que não leva a uma ação.</p>
+        </div>
+        <div class="bento__grid">
+          <article class="bento-card bento-card--wide reveal">
+            <div class="bento-card__text">
+              <span class="tag">Descoberta</span>
+              <h3>Uma varredura.<br />A rede inteira.</h3>
+              <p>Combinação de protocolos para não depender de um único sinal. O modo passivo observa sem gerar tráfego novo; o ativo vai além quando você autoriza.</p>
+              <a class="link" href="#produto">Ver como funciona <svg class="icon"><use href="#i-arrow"/></svg></a>
+            </div>
+            <div class="bento-card__visual"><img src="assets/img/topology.jpg" alt="Ilustração de nós de rede conectados em bronze sobre fundo escuro" loading="lazy" /></div>
+          </article>
+
+          <article class="bento-card reveal">
+            <span class="tag">Auditoria</span>
+            <h3>Postura, não só portas.</h3>
+            <p>SMBv1, Telnet, RDP, SNMP público, HTTP administrativo, TLS. Cada achado tem severidade, evidência e o comando para corrigir.</p>
+            <div class="mini-list"><span>Crítico</span><span>Alto</span><span>Médio</span><span>Baixo</span></div>
+          </article>
+
+          <article class="bento-card reveal">
+            <span class="tag">Segurança</span>
+            <h3>Verificação passiva.</h3>
+            <p>Analisa ativos e portas já descobertos. Sem exploit, força bruta, DoS, spoofing ou alteração de configuração.</p>
+            <div class="shield-line"><svg class="icon"><use href="#i-shield"/></svg> somente leitura</div>
+          </article>
+
+          <article class="bento-card reveal">
+            <span class="tag">IA</span>
+            <h3>Inteligência que fica.</h3>
+            <p>Modelo local via Ollama, com fallback para regras. Sua topologia e seus achados não saem da máquina.</p>
+            <div class="chip-row"><span>Ollama</span><span>qwen2.5</span><span>offline</span></div>
+          </article>
+
+          <article class="bento-card reveal">
+            <span class="tag">Relatórios</span>
+            <h3>Pronto para a reitoria.</h3>
+            <p>Relatórios executivos em PDF, CSV e JSON. Postura, achados, evidências e prioridades em linguagem que a gestão entende.</p>
+            <div class="format-row"><span>PDF</span><span>CSV</span><span>JSON</span></div>
+          </article>
+
+          <article class="bento-card bento-card--accent reveal">
+            <span class="tag">Licença</span>
+            <h3>Local. Assinada.<br />Sua.</h3>
+            <p>Trial de 7 dias e ativação offline com licença Ed25519. Sem servidor de licença, sem dependência de internet.</p>
+            <a class="link" href="#contato">Falar sobre licenciamento <svg class="icon"><use href="#i-arrow"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section showcase" id="produto">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">O produto</p>
+          <h2>Uma tela.<br /><em>Todas as respostas.</em></h2>
+          <p class="section-head__lead">Dashboard, segurança e diagnóstico no mesmo lugar. Alterne entre as visões e veja o produto em operação.</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Telas do produto">
+          <button class="tab is-active" role="tab" aria-selected="true" data-tab="dashboard">Dashboard</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="security">Segurança</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="route">Rota</button>
+        </div>
+
+        <div class="showcase__stage">
+          <div class="window window--stage">
+            <div class="window__bar"><span></span><span></span><span></span><small id="stageTitle">NexusTI · dashboard</small><i class="window__live">produto real</i></div>
+            <div class="stage-slide is-active" data-panel="dashboard"><img src="assets/shots/dashboard-data.png" alt="Dashboard do NexusTI com postura de segurança, ativos e identidade" loading="lazy" /></div>
+            <div class="stage-slide" data-panel="security"><img src="assets/shots/security.png" alt="Aba Segurança do NexusTI com verificação passiva e relatórios" loading="lazy" /></div>
+            <div class="stage-slide" data-panel="route"><img src="assets/shots/route.png" alt="Aba Rota do NexusTI com traceroute e diagnóstico de conectividade" loading="lazy" /></div>
+          </div>
+          <aside class="stage-aside">
+            <span class="tag">Em operação</span>
+            <h3 id="stageHeading">A rede em uma tela.</h3>
+            <p id="stageText">Ativos, achados, postura e identidade. O resumo que a equipe abre primeiro — e entende sem treinamento.</p>
+            <ul id="stageList">
+              <li>Postura por severidade e camada OSI</li>
+              <li>Identidade, DNS, DHCP e Active Directory</li>
+              <li>Prioridades do dia e atalhos de ação</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section workflow">
+      <div class="container">
+        <div class="workflow__grid">
+          <div class="workflow__copy">
+            <p class="kicker">Como funciona</p>
+            <h2>Do primeiro pacote<br /><em>ao relatório.</em></h2>
+            <p class="section-head__lead">Três passos. Sem agente em cada máquina, sem instalação de coletor externo, sem mudar a configuração da rede.</p>
+            <a class="link" href="#contato">Agendar uma demonstração <svg class="icon"><use href="#i-arrow"/></svg></a>
+          </div>
+          <ol class="steps">
+            <li class="reveal">
+              <span class="steps__num">01</span>
+              <div><h3>Defina o escopo</h3><p>Informe a sub-rede, a janela e a autorização. O NexusTI valida o limite, ignora adaptadores virtuais e escolhe o modo passivo por padrão.</p></div>
+            </li>
+            <li class="reveal">
+              <span class="steps__num">02</span>
+              <div><h3>Descubra e audite</h3><p>Ativos, portas, serviços e postura. A IA local e o motor de regras transformam evidências em prioridades e recomendações.</p></div>
+            </li>
+            <li class="reveal">
+              <span class="steps__num">03</span>
+              <div><h3>Entregue e acompanhe</h3><p>Relatório em PDF, CSV ou JSON, com achados, severidade e comandos. A equipe aplica com janela e rollback — o NexusTI não altera nada.</p></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section deep deep--topology">
+      <div class="container deep__grid">
+        <div class="deep__visual reveal">
+          <div class="visual-frame visual-frame--image"><img src="assets/img/topology.jpg" alt="Rede de nós interligados representando a topologia descoberta" loading="lazy" /></div>
+          <div class="visual-note"><svg class="icon"><use href="#i-topology"/></svg><span><strong>Topologia viva</strong><small>ativos, VLANs e vizinhos</small></span></div>
+        </div>
+        <div class="deep__copy">
+          <p class="kicker">Topologia e inventário</p>
+          <h2>A rede deixa de ser<br /><em>uma caixa-preta.</em></h2>
+          <p>Veja o que existe, onde está e como se conecta. O inventário reúne IP, MAC, fabricante, sistema, VLAN e fontes de descoberta — sem planilha paralela.</p>
+          <ul class="check-list">
+            <li><svg class="icon"><use href="#i-check"/></svg> Estações, servidores, impressoras e ativos de rede</li>
+            <li><svg class="icon"><use href="#i-check"/></svg> Gateway, DNS, DHCP e domínio em contexto</li>
+            <li><svg class="icon"><use href="#i-check"/></svg> Histórico por ativo e evidências da descoberta</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section deep deep--ai">
+      <div class="container deep__grid deep__grid--reverse">
+        <div class="deep__copy">
+          <p class="kicker">Assistente local</p>
+          <h2>IA que explica.<br /><em>Sem sair da rede.</em></h2>
+          <p>Pergunte em português: “o que é uma VLAN?”, “como corrigir SMBv1?”, “por que a internet caiu?”. O assistente usa o modelo local e o playbook do produto para responder com contexto — não com genérico.</p>
+          <ul class="check-list">
+            <li><svg class="icon"><use href="#i-check"/></svg> Ollama local, com fallback determinístico por regras</li>
+            <li><svg class="icon"><use href="#i-check"/></svg> Respostas com causa, evidência e comando</li>
+            <li><svg class="icon"><use href="#i-check"/></svg> Nenhum dado de topologia enviado para fora</li>
+          </ul>
+          <div class="privacy"><svg class="icon"><use href="#i-lock"/></svg><span><strong>Privacidade por arquitetura</strong><small>o modelo roda na máquina, não na nuvem</small></span></div>
+        </div>
+        <div class="deep__visual reveal">
+          <div class="chat-card">
+            <div class="chat-card__head"><img src="assets/brand-mark.png" alt="" width="26" height="26" /><span>Assistente NexusTI</span><i class="status-dot"></i></div>
+            <div class="chat-bubble chat-bubble--user">Como corrigir SMBv1 no Windows Server?</div>
+            <div class="chat-bubble chat-bubble--ai"><strong>SMBv1 habilitado no host</strong><span>Desative o recurso, remova o protocolo legado e valide com um novo scan. Abaixo, o comando e o rollback.</span><code>Disable-WindowsOptionalFeature -Online -FeatureName smb1protocol</code></div>
+            <div class="chat-input"><span>Pergunte sobre a sua rede…</span><svg class="icon"><use href="#i-arrow"/></svg></div>
+          </div>
+          <div class="visual-note visual-note--ai"><svg class="icon"><use href="#i-ai"/></svg><span><strong>IA local</strong><small>100% GPU · contexto 4096</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section deep deep--route">
+      <div class="container deep__grid">
+        <div class="deep__visual reveal">
+          <div class="window window--small">
+            <div class="window__bar"><span></span><span></span><span></span><small>Diagnóstico de rota</small><i class="window__live">online</i></div>
+            <img src="assets/shots/route.png" alt="Tela de diagnóstico de rota com traceroute e testes de gateway, DNS e HTTPS" loading="lazy" />
+          </div>
+          <div class="route-chips"><span>gateway</span><span>DNS</span><span>TCP 443</span><span>HTTPS</span><span>traceroute</span></div>
+        </div>
+        <div class="deep__copy">
+          <p class="kicker">Diagnóstico</p>
+          <h2>“A internet caiu”<br /><em>deixa de ser resposta.</em></h2>
+          <p>Teste gateway, DNS, saída TCP e HTTPS em sequência. O diagnóstico classifica o ponto de falha e o traceroute mostra o caminho até o destino.</p>
+          <ul class="check-list">
+            <li><svg class="icon"><use href="#i-check"/></svg> Local, DNS, NAT/firewall, proxy ou operadora</li>
+            <li><svg class="icon"><use href="#i-check"/></svg> Rota salto a salto, com latência e perda</li>
+            <li><svg class="icon"><use href="#i-check"/></svg> Evidência exportável para o chamado</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section safety" id="seguranca">
+      <div class="container safety__grid">
+        <div class="safety__copy">
+          <p class="kicker">Segurança e limites</p>
+          <h2>Poderoso por dentro.<br /><em>Contido por padrão.</em></h2>
+          <p>O NexusTI foi desenhado para operar em redes reais, com regras claras. O padrão é não gerar tráfego novo, não alterar configuração e não explorar falhas.</p>
+          <div class="safety__badge"><svg class="icon"><use href="#i-shield"/></svg><span><strong>Princípio de operação</strong><small>observar, evidendar, recomendar — nunca explorar</small></span></div>
+        </div>
+        <ul class="guards">
+          <li><span>01</span><div><h3>Passivo por padrão</h3><p>Primeiro escuta. O modo ativo só entra com autorização explícita.</p></div></li>
+          <li><span>02</span><div><h3>Escopo limitado</h3><p>Máximo /22 por execução, com rejeição de redes amplas e adaptadores virtuais.</p></div></li>
+          <li><span>03</span><div><h3>Sem exploit</h3><p>Nada de força bruta, DoS, spoofing ou alteração de configuração.</p></div></li>
+          <li><span>04</span><div><h3>Dados locais</h3><p>SQLite, API em 127.0.0.1 e relatórios na própria máquina.</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section audience">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div><p class="kicker">Para quem é</p><h2>Feito para a rede<br /><em>que você realmente tem.</em></h2></div>
+          <p class="section-head__lead">Heterogênea, com legado, VLANs e pouca documentação. É aí que o NexusTI faz diferença.</p>
+        </div>
+        <div class="audience__grid">
+          <article class="audience-card reveal"><span class="tag">TI interna</span><h3>Menos tempo apagando incêndio.</h3><p>Inventário, postura e diagnóstico em um só lugar. A equipe chega ao problema com evidência, não com tentativa.</p></article>
+          <article class="audience-card reveal"><span class="tag">Universidades</span><h3>Visibilidade sobre o campus.</h3><p>Múltiplas VLANs, laboratórios, impressoras e dispositivos legados. Relatórios que a gestão entende e a TI consegue executar.</p></article>
+          <article class="audience-card reveal"><span class="tag">Consultorias</span><h3>Um diagnóstico que se apresenta.</h3><p>Levantamento rápido, escopo controlado e relatório executivo para entregar ao cliente no mesmo dia.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section offer">
+      <div class="container">
+        <div class="offer__grid">
+          <article class="offer-card">
+            <span class="tag">Avaliação</span>
+            <h3>7 dias</h3>
+            <p>Teste o produto em ambiente controlado, com escopo explícito e dados locais.</p>
+            <ul><li>Instalação assistida</li><li>Escopo de laboratório</li><li>Relatório de avaliação</li></ul>
+            <a class="btn btn--ghost" href="#contato">Solicitar avaliação</a>
+          </article>
+          <article class="offer-card offer-card--feature">
+            <span class="tag">Institucional</span>
+            <h3>Licença local</h3>
+            <p>Licença assinada, vinculada à máquina e válida sem internet. Ideal para ambientes isolados.</p>
+            <ul><li>Ativação offline</li><li>Renovação por licença</li><li>Sem servidor de licença</li></ul>
+            <a class="btn btn--primary" href="#contato">Falar com especialista <svg class="icon"><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="offer-card">
+            <span class="tag">Serviço</span>
+            <h3>Implantação assistida</h3>
+            <p>Configuração, primeira varredura, leitura dos achados e plano de correção com a sua equipe.</p>
+            <ul><li>Setup e escopo</li><li>Leitura de resultados</li><li>Plano de remediação</li></ul>
+            <a class="btn btn--ghost" href="#contato">Conhecer o serviço</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section specs">
+      <div class="container">
+        <div class="specs__head"><p class="kicker">Ficha técnica</p><h2>O que está por dentro.</h2></div>
+        <div class="specs__grid">
+          <div class="spec"><span>Descoberta</span><p>ARP, ICMP, DNS, SNMP e TCP. IPv4, VLANs e sub-redes; modo passivo e ativo.</p></div>
+          <div class="spec"><span>Auditoria</span><p>Serviços legados, exposição, TLS e configurações de risco, com severidade e evidência.</p></div>
+          <div class="spec"><span>IA</span><p>Modelo local via Ollama, com fallback determinístico por regras e playbooks.</p></div>
+          <div class="spec"><span>Diagnóstico</span><p>Gateway, DNS, TCP, HTTPS, traceroute e classificação de falha de internet.</p></div>
+          <div class="spec"><span>Relatórios</span><p>PDF executivo, CSV para análise e JSON para integração.</p></div>
+          <div class="spec"><span>Plataforma</span><p>Windows 10/11, instalação por usuário, SQLite WAL, API local em 127.0.0.1.</p></div>
+          <div class="spec"><span>Licença</span><p>Trial de 7 dias e ativação local assinada (Ed25519), sem validação online.</p></div>
+          <div class="spec"><span>Limites</span><p>Até /22 por execução, 4.096 hosts e escopo sempre declarado.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="container faq__grid">
+        <div class="faq__head">
+          <p class="kicker">Perguntas frequentes</p>
+          <h2>Antes de<br /><em>perguntar.</em></h2>
+          <p class="section-head__lead">Se a sua dúvida não estiver aqui, fale com a gente.</p>
+          <a class="link" href="#contato">Falar com especialista <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="faq__list">
+          <details open><summary>O NexusTI precisa de internet?</summary><p>Não. A descoberta, a auditoria, a IA e a licença funcionam localmente. A internet só é necessária para baixar o instalador ou falar com o suporte.</p></details>
+          <details><summary>Ele altera a configuração da rede?</summary><p>Não. O produto é somente leitura: descobre, audita e recomenda. Nenhuma alteração é aplicada automaticamente; os comandos ficam com a equipe responsável.</p></details>
+          <details><summary>Qual o escopo máximo de uma varredura?</summary><p>Até /22 por execução, com limite de 4.096 hosts. Redes mais amplas são rejeitadas para evitar varreduras acidentais.</p></details>
+          <details><summary>Como funciona a IA?</summary><p>Um modelo local via Ollama, com fallback para regras e playbooks. A topologia, os achados e as perguntas não são enviados para a nuvem.</p></details>
+          <details><summary>Como funciona a licença?</summary><p>Trial de 7 dias e, depois, licença local assinada com Ed25519, vinculada à máquina. A ativação é offline: você importa o arquivo <code>.lic</code>.</p></details>
+          <details><summary>Funciona em rede com VLANs e legado?</summary><p>Sim. O produto foi feito para redes heterogêneas, com VLANs, equipamentos antigos e pouca documentação. O escopo é declarado por sub-rede.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contato">
+      <div class="cta__media" aria-hidden="true"><img src="assets/img/hero.jpg" alt="" loading="lazy" /></div>
+      <div class="container cta__inner">
+        <p class="kicker">Próximo passo</p>
+        <h2>Coloque a sua rede<br /><em>na mesma tela.</em></h2>
+        <p>Demonstração guiada, escopo controlado e leitura dos seus primeiros achados. Sem instalar agente e sem compromisso.</p>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="mailto:mtresdsistemas@gmail.com?subject=Demonstra%C3%A7%C3%A3o%20NexusTI&body=Ol%C3%A1%2C%20quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20NexusTI.%0A%0AInstitui%C3%A7%C3%A3o%3A%0ARede%2Fsegmentos%3A%0ANecessidade%3A">Solicitar demonstração <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost" href="mailto:mtresdsistemas@gmail.com?subject=Licen%C3%A7a%20NexusTI">Falar sobre licença</a>
+        </div>
+        <p class="cta__small">Resposta em até 1 dia útil · atendimento em português</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#topo"><img class="brand__mark" src="assets/brand-mark.png" alt="" width="42" height="42" /><span class="brand__type"><strong>NexusTI</strong><small>NETGUARD AI</small></span></a>
+        <p>Inteligência de rede local para quem precisa enxergar antes de agir.</p>
+      </div>
+      <div class="footer__col"><h4>Produto</h4><a href="#plataforma">Plataforma</a><a href="#recursos">Recursos</a><a href="#produto">Telas</a><a href="#seguranca">Segurança</a></div>
+      <div class="footer__col"><h4>Empresa</h4><a href="#contato">Contato</a><a href="#faq">FAQ</a><a href="mailto:mtresdsistemas@gmail.com">Suporte</a></div>
+      <div class="footer__col"><h4>Legal</h4><a href="#" data-legal="privacidade">Privacidade</a><a href="#" data-legal="termos">Termos</a><a href="#" data-legal="licenca">Licença</a></div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year">2026</span> NexusTI · NetGuard AI. Desenvolvido por M3D MULTIDEV.</span>
+      <span class="footer__badge"><span class="status-dot"></span> Operação local · sem cloud</span>
+    </div>
+  </footer>
+
+  <dialog class="legal" id="legalDialog">
+    <button class="legal__close" aria-label="Fechar"><svg class="icon"><use href="#i-x"/></svg></button>
+    <h3 id="legalTitle">Privacidade</h3>
+    <div id="legalBody"></div>
+  </dialog>
+</body>
+</html>

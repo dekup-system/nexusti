@@ -1,0 +1,13 @@
+{
+  "name": "NexusTI — NetGuard AI",
+  "short_name": "NexusTI",
+  "description": "Inteligência de rede local: descoberta, topologia, auditoria e diagnóstico.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080706",
+  "theme_color": "#080706",
+  "icons": [
+    { "src": "/assets/favicon.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "/assets/apple-touch.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
