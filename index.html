@@ -514,10 +514,13 @@
           <div class="lead-card">
             <div class="lead-card__head">
               <span class="tag">Contato</span>
-              <h3>Solicitar demonstração</h3>
-              <p>Conte um pouco sobre a sua operação. Retornamos com uma agenda.</p>
+              <h3>Solicitar Orçamento</h3>
+              <p>Conte um pouco sobre a sua operação. Retornamos com uma proposta e uma agenda.</p>
             </div>
-            <form id="leadForm" class="lead-form" action="/api/lead" method="post">
+            <form id="leadForm" class="lead-form" action="https://api.web3forms.com/submit" method="post">
+              <input type="hidden" name="access_key" value="c1374565-8d4c-49cc-96bf-0ccb49995412" />
+              <input type="hidden" name="subject" value="Solicitar Orçamento — NexIA Core" />
+              <input type="hidden" name="from_name" value="NexIA Core" />
               <div class="form-row">
                 <label class="field"><span>Nome *</span><input class="input" name="name" autocomplete="name" required maxlength="120" /></label>
                 <label class="field"><span>E-mail corporativo *</span><input class="input" name="email" type="email" autocomplete="email" required maxlength="160" /></label>
@@ -542,7 +545,7 @@
               <label class="consent"><input type="checkbox" name="consent" required /> Concordo em ser contatado sobre o NexIA Core e li a <a href="#" data-legal="privacidade">política de privacidade</a>.</label>
               <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
               <input type="hidden" name="source" value="landing" />
-              <button class="btn btn--primary lead-form__submit" type="submit" id="leadSubmit">Enviar solicitação <svg class="icon"><use href="#i-arrow"/></svg></button>
+              <button class="btn btn--primary lead-form__submit" type="submit" id="leadSubmit">Solicitar orçamento <svg class="icon"><use href="#i-arrow"/></svg></button>
               <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
               <p class="form-note">Seus dados são usados apenas para responder a este contato. Sem newsletter.</p>
             </form>
@@ -551,6 +554,20 @@
       </div>
     </section>
   </main>
+
+  <section class="thanks" id="obrigado" hidden>
+    <div class="thanks__card">
+      <span class="thanks__icon"><svg class="icon"><use href="#i-check"/></svg></span>
+      <p class="eyebrow">Solicitação recebida</p>
+      <h1>Obrigado.<br /><em>Já estamos com o seu pedido.</em></h1>
+      <p>Retornamos em até 1 dia útil com uma proposta e uma agenda de demonstração. Enquanto isso, você pode conhecer os recursos ou falar direto com o time.</p>
+      <div class="thanks__actions">
+        <a class="btn btn--primary" href="#topo" id="thanksBack">Voltar ao site <svg class="icon"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="mailto:mtresdsistemas@gmail.com?subject=Or%C3%A7amento%20NexIA%20Core">Falar por e-mail</a>
+      </div>
+      <p class="thanks__note">Seu protocolo é o próprio e-mail de confirmação do Web3Forms.</p>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="container footer__grid">

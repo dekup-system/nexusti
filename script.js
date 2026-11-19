@@ -149,15 +149,41 @@
     }
   }
 
+  /* ------------------------------------------------------------ agradecimento */
+  const thanks = $("#obrigado");
+  const showThanks = () => {
+    if (!thanks) return;
+    thanks.hidden = false;
+    document.body.classList.add("thanks-mode");
+    window.scrollTo(0, 0);
+    document.title = "Obrigado — NexIA Core";
+  };
+  const hideThanks = () => {
+    if (!thanks) return;
+    thanks.hidden = true;
+    document.body.classList.remove("thanks-mode");
+  };
+  $("#thanksBack")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    history.replaceState(null, "", location.pathname + location.search);
+    hideThanks();
+    window.scrollTo(0, 0);
+  });
+  if (location.hash === "#obrigado") showThanks();
+  window.addEventListener("hashchange", () => {
+    if (location.hash === "#obrigado") showThanks();
+  });
+
   /* ------------------------------------------------------------ formulário */
   const leadForm = $("#leadForm");
   if (leadForm) {
     const status = $("#formStatus");
     const submit = $("#leadSubmit");
+    const endpoint = "https://api.web3forms.com/submit";
     const mailtoBase = "mailto:mtresdsistemas@gmail.com";
     const fallback = (data) => {
       const body = [
-        "Solicitação de demonstração — NexIA Core",
+        "Solicitação de orçamento — NexIA Core",
         "",
         `Nome: ${data.name || ""}`,
         `E-mail: ${data.email || ""}`,
@@ -168,7 +194,7 @@
         "Necessidade:",
         data.message || "",
       ].join("\n");
-      const url = `${mailtoBase}?subject=${encodeURIComponent("Demonstração NexIA Core — " + (data.company || data.name || "site"))}&body=${encodeURIComponent(body)}`;
+      const url = `${mailtoBase}?subject=${encodeURIComponent("Orçamento NexIA Core — " + (data.company || data.name || "site"))}&body=${encodeURIComponent(body)}`;
       status.className = "form-status is-error";
       status.innerHTML = `Não foi possível enviar agora. <a href="${url}">Enviar por e-mail</a> ou tente novamente.`;
     };
@@ -182,22 +208,20 @@
       status.className = "form-status";
       status.textContent = "Enviando…";
       try {
-        const response = await fetch("/api/lead", {
+        const response = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(data),
         });
         let payload = {};
         try { payload = await response.json(); } catch (_) { /* resposta não JSON */ }
-        if (response.ok && payload.ok) {
+        if (response.ok && (payload.success || payload.ok)) {
           leadForm.reset();
-          status.className = "form-status is-ok";
-          status.textContent = "Recebido. Retornamos em até 1 dia útil para agendar a demonstração.";
-        } else if ([404, 501, 503].includes(response.status)) {
-          fallback(data);
+          history.pushState(null, "", "#obrigado");
+          showThanks();
         } else {
           status.className = "form-status is-error";
-          status.textContent = payload.error || "Não foi possível enviar. Tente novamente em instantes.";
+          status.textContent = payload.message || payload.error || "Não foi possível enviar. Tente novamente em instantes.";
         }
       } catch (_) {
         fallback(data);

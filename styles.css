@@ -429,6 +429,37 @@ section[id] { scroll-margin-top: 92px; }
 .form-status a { color: var(--bronze); border-bottom: 1px solid var(--line); }
 .form-note { margin: 0; color: #63584a; font-size: 8.5px; line-height: 1.5; }
 
+/* ---------------------------------------------------------------- obrigado */
+.thanks {
+  position: fixed; inset: 0; z-index: 160; display: grid; place-items: center;
+  padding: 24px; overflow-y: auto;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(196,154,108,.18), transparent 32%),
+    linear-gradient(145deg, #0b0a08, #12100c 55%, #080706);
+}
+.thanks[hidden] { display: none !important; }
+body.thanks-mode { overflow: hidden; }
+.thanks__card {
+  width: min(680px, 100%); padding: 46px; border: 1px solid var(--line-strong);
+  border-radius: 18px; background: rgba(16, 13, 9, .96); box-shadow: 0 30px 100px rgba(0,0,0,.55);
+  text-align: left;
+}
+.thanks__icon {
+  display: inline-grid; place-items: center; width: 46px; height: 46px; margin-bottom: 22px;
+  border: 1px solid var(--line-strong); border-radius: 12px; color: var(--bronze);
+  background: rgba(196,154,108,.08);
+}
+.thanks__icon .icon { width: 22px; height: 22px; stroke-width: 2.4; }
+.thanks h1 {
+  margin: 0 0 18px; font-family: var(--display); font-size: clamp(38px, 5vw, 58px);
+  font-weight: 300; line-height: 1.02; letter-spacing: -.05em;
+}
+.thanks h1 em { font-family: var(--serif); font-style: italic; color: var(--sand); font-weight: 400; }
+.thanks p { margin: 0 0 12px; color: var(--muted); font-size: 13px; line-height: 1.7; max-width: 540px; }
+.thanks__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.thanks__note { margin-top: 20px !important; color: var(--dim) !important; font-size: 9px !important; }
+@media (max-width: 760px) { .thanks__card { padding: 28px; } }
+
 /* ---------------------------------------------------------------- footer */
 .footer { background: #070605; border-top: 1px solid var(--line); padding: 64px 0 26px; }
 .footer__grid { display: grid; grid-template-columns: 1.6fr .8fr .8fr .8fr; gap: 50px; }

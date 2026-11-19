@@ -35,9 +35,6 @@ O `vercel.json` já define `cleanUrls` e cache longo para `/assets`.
 ├── styles.css
 ├── script.js
 ├── vercel.json
-├── .env.example
-├── api/
-│   └── lead.js
 ├── robots.txt
 ├── site.webmanifest
 ├── assets/
@@ -78,30 +75,27 @@ A página apresenta:
 
 - Troque o `canonical` e o `og:url` pelo domínio final.
 - Confirme o e-mail de contato em `index.html` (`mtresdsistemas@gmail.com`).
-- O formulário envia para `/api/lead`; configure `RESEND_API_KEY` e `LEAD_TO` na Vercel (veja abaixo). Sem configuração, ele oferece fallback por e-mail.
+- O formulário envia direto para o **Web3Forms** usando a access key configurada em `index.html`; a chave é pública por natureza.
 - A página não usa analytics por padrão.
 
 ## Formulário de contato
 
-A seção **Contato** tem um formulário que envia para `POST /api/lead`
-(`api/lead.js`), com validação no cliente e no servidor, honeypot e limite
-simples de requisições.
+A seção **Contato** tem o título **Solicitar Orçamento** e envia direto para o
+Web3Forms, sem função na Vercel:
 
-Na Vercel, configure em **Settings → Environment Variables**:
+- endpoint: `https://api.web3forms.com/submit`;
+- access key pública configurada no formulário;
+- destinatário: e-mail cadastrado na conta Web3Forms;
+- sucesso: redireciona para `/#obrigado`;
+- erro de rede: oferece fallback por e-mail.
 
-| Variável | Obrigatória | Função |
-|---|---|---|
-| `RESEND_API_KEY` | sim (para e-mail) | chave da [Resend](https://resend.com) |
-| `LEAD_TO` | sim | destinatário; aceita vírgula |
-| `LEAD_FROM` | recomendada | remetente verificado, ex. `NexIA Core <contato@seudominio.com>` |
-| `LEAD_WEBHOOK_URL` | opcional | se definido, envia o JSON para um webhook em vez de e-mail |
+Para trocar o destinatário, altere o e-mail na conta Web3Forms — não é necessário
+mexer no código.
 
-Sem `RESEND_API_KEY`/`LEAD_TO`, a API responde **503** e a página oferece o
-fallback por e-mail com os dados preenchidos — o formulário nunca “engole” a
-mensagem.
+## Página de agradecimento
 
-Para testar localmente, rode apenas o estático: o envio cai no fallback de
-e-mail. Para testar o endpoint, use `vercel dev` com as variáveis acima.
+`/#obrigado` exibe a confirmação em tela cheia, com retorno ao site. O formulário
+faz `history.pushState` para essa URL após o envio bem-sucedido.
 
 ## Licença
 
