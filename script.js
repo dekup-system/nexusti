@@ -174,62 +174,7 @@
     if (location.hash === "#obrigado") showThanks();
   });
 
-  /* ------------------------------------------------------------ formulário */
-  const leadForm = $("#leadForm");
-  if (leadForm) {
-    const status = $("#formStatus");
-    const submit = $("#leadSubmit");
-    const endpoint = "https://api.web3forms.com/submit";
-    const mailtoBase = "mailto:mtresdsistemas@gmail.com";
-    const fallback = (data) => {
-      const body = [
-        "Solicitação de orçamento — NexIA Core",
-        "",
-        `Nome: ${data.name || ""}`,
-        `E-mail: ${data.email || ""}`,
-        `Empresa: ${data.company || ""}`,
-        `Cargo: ${data.role || ""}`,
-        `Rede: ${data.network || ""}`,
-        "",
-        "Necessidade:",
-        data.message || "",
-      ].join("\n");
-      const url = `${mailtoBase}?subject=${encodeURIComponent("Orçamento NexIA Core — " + (data.company || data.name || "site"))}&body=${encodeURIComponent(body)}`;
-      status.className = "form-status is-error";
-      status.innerHTML = `Não foi possível enviar agora. <a href="${url}">Enviar por e-mail</a> ou tente novamente.`;
-    };
-
-    leadForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (!leadForm.reportValidity()) return;
-      const data = Object.fromEntries(new FormData(leadForm).entries());
-      if (data.website) return; // honeypot
-      submit.disabled = true;
-      status.className = "form-status";
-      status.textContent = "Enviando…";
-      try {
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(data),
-        });
-        let payload = {};
-        try { payload = await response.json(); } catch (_) { /* resposta não JSON */ }
-        if (response.ok && (payload.success || payload.ok)) {
-          leadForm.reset();
-          history.pushState(null, "", "#obrigado");
-          showThanks();
-        } else {
-          status.className = "form-status is-error";
-          status.textContent = payload.message || payload.error || "Não foi possível enviar. Tente novamente em instantes.";
-        }
-      } catch (_) {
-        fallback(data);
-      } finally {
-        submit.disabled = false;
-      }
-    });
-  }
+  /* Formulário: envio nativo para o Web3Forms, com redirect para /#obrigado. */
 
   /* ------------------------------------------------------------ ano */
   const year = $("#year");
