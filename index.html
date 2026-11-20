@@ -79,7 +79,7 @@
         <a href="#faq">FAQ</a>
       </nav>
       <div class="header__actions">
-        <a class="btn btn--small btn--primary" href="/api/download">BAIXAR TRIAL <svg class="icon"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--small btn--primary js-download-trial" href="/api/download">BAIXAR TRIAL <svg class="icon"><use href="#i-arrow"/></svg></a>
         <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
           <svg class="icon"><use href="#i-menu"/></svg>
         </button>
@@ -99,7 +99,7 @@
           <h1>Enxergue a rede.<br /><em>Antes que ela falhe.</em></h1>
           <p class="hero__lead">Descoberta, topologia, auditoria de postura e diagnóstico em um único painel. O NexIA Core transforma dados dispersos em decisões — sem enviar a sua rede para a nuvem.</p>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="/api/download">BAIXAR TRIAL <svg class="icon"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--primary js-download-trial" href="/api/download">BAIXAR TRIAL <svg class="icon"><use href="#i-arrow"/></svg></a>
             <a class="btn btn--ghost" href="#produto"><svg class="icon"><use href="#i-play"/></svg> Ver o produto</a>
           </div>
           <p class="hero__download">Trial de 7 dias · Windows 10/11 · instalador de 28,9 MB</p>
@@ -562,6 +562,29 @@
       <p class="thanks__note">Seu protocolo é o próprio e-mail de confirmação do Web3Forms.</p>
     </div>
   </section>
+
+  <dialog class="download-modal" id="downloadModal" aria-labelledby="downloadTitle">
+    <div class="download-modal__inner">
+      <div class="download-modal__head">
+        <span class="tag">Download do trial</span>
+        <button class="download-modal__close" type="button" data-close-download aria-label="Fechar instruções">×</button>
+      </div>
+      <h2 id="downloadTitle">Instalador a caminho.<br /><em>Agora veja como abrir.</em></h2>
+      <p class="download-modal__lead">O download começou. Quando terminar, siga estes passos:</p>
+      <ol class="download-steps">
+        <li><strong>Abra a pasta Downloads</strong> e dê duplo clique no arquivo <code>NexIA-Core-Setup...exe</code>.</li>
+        <li>Se o Windows mostrar <strong>“O Windows protegeu o seu PC”</strong>, clique em <strong>Mais informações</strong> e depois em <strong>Executar assim mesmo</strong>.</li>
+        <li>Siga o instalador. Ele instala por usuário, sem pedir administrador, e não altera a rede.</li>
+        <li>Abra o NexIA Core. O trial é de <strong>7 dias</strong>; a ativação é offline, com o arquivo <code>.lic</code>.</li>
+      </ol>
+      <p class="download-modal__note">O aviso do SmartScreen é esperado porque o instalador ainda não tem assinatura digital paga. Não é necessário desativar o antivírus.</p>
+      <div class="download-modal__actions">
+        <a class="btn btn--primary" href="/api/download">BAIXAR NOVAMENTE <svg class="icon"><use href="#i-arrow"/></svg></a>
+        <button class="btn btn--ghost" type="button" data-close-download>Fechar</button>
+      </div>
+      <p class="download-modal__small">Se o navegador bloquear o download, permita downloads deste site ou use “Baixar novamente”.</p>
+    </div>
+  </dialog>
 
   <footer class="footer">
     <div class="container footer__grid">

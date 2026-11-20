@@ -8,7 +8,7 @@ const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
  * Variáveis na Vercel:
  *   R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY
  *   R2_BUCKET (padrão: nexiacore)
- *   R2_KEY (padrão: NexIA-Core-Setup-1.0.3.exe)
+ *   R2_KEY (padrão: NexIA-Core-Setup-1.0.4.exe)
  */
 module.exports = async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
@@ -20,7 +20,7 @@ module.exports = async function handler(req, res) {
   const accessKeyId = process.env.R2_ACCESS_KEY_ID;
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
   const bucket = process.env.R2_BUCKET || "nexiacore";
-  const key = process.env.R2_KEY || "NexIA-Core-Setup-1.0.3.exe";
+  const key = process.env.R2_KEY || "NexIA-Core-Setup-1.0.4.exe";
   const filename = key.split("/").pop() || "NexIA-Core-Setup.exe";
   if (!account || !accessKeyId || !secretAccessKey) {
     res.status(503).json({ error: "Download do trial ainda não configurado." });

@@ -174,6 +174,42 @@
     if (location.hash === "#obrigado") showThanks();
   });
 
+  /* ------------------------------------------------------------ download do trial */
+  const downloadDialog = $("#downloadModal");
+  let downloadStarted = false;
+  const startTrialDownload = () => {
+    if (downloadStarted) return;
+    downloadStarted = true;
+    const frame = document.createElement("iframe");
+    frame.hidden = true;
+    frame.setAttribute("aria-hidden", "true");
+    frame.src = `/api/download?src=site&t=${Date.now()}`;
+    document.body.appendChild(frame);
+    window.setTimeout(() => frame.remove(), 120000);
+  };
+  const closeDownloadDialog = () => {
+    if (downloadDialog?.open) downloadDialog.close();
+    document.body.classList.remove("download-open");
+  };
+  $$(".js-download-trial").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (!downloadDialog || typeof downloadDialog.showModal !== "function") return;
+      event.preventDefault();
+      startTrialDownload();
+      try {
+        if (!downloadDialog.open) downloadDialog.showModal();
+        document.body.classList.add("download-open");
+      } catch (_) {
+        window.location.href = "/api/download";
+      }
+    });
+  });
+  $$("[data-close-download]").forEach((button) => button.addEventListener("click", closeDownloadDialog));
+  downloadDialog?.addEventListener("click", (event) => {
+    if (event.target === downloadDialog) closeDownloadDialog();
+  });
+  downloadDialog?.addEventListener("close", () => document.body.classList.remove("download-open"));
+
   /* Formulário: envio nativo para o Web3Forms, com redirect para /#obrigado. */
 
   /* ------------------------------------------------------------ ano */
