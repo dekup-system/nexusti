@@ -342,7 +342,7 @@ section[id] { scroll-margin-top: 92px; }
 
 /* ---------------------------------------------------------------- offer */
 .offer { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.offer__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.offer__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 .offer-card { padding: 28px 26px; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); display: flex; flex-direction: column; min-height: 340px; }
 .offer-card--feature { border-color: var(--line-strong); background: linear-gradient(160deg, #19140d, #100d09 55%); }
 .offer-card h3 { margin: 0 0 8px; font-family: var(--display); font-size: 28px; font-weight: 300; letter-spacing: -.04em; }
