@@ -113,10 +113,10 @@ Configure na Vercel:
 | `R2_ACCESS_KEY_ID` | access key do R2 |
 | `R2_SECRET_ACCESS_KEY` | secret do R2 |
 | `R2_BUCKET` | `nexiacore` |
-| `R2_KEY` | `NexIA-Core-Setup-1.0.0.exe` |
+| `R2_KEY` | `NexIA-Core-Setup-1.0.3.exe` |
 
 O instalador está no bucket `nexiacore`, objeto
-`NexIA-Core-Setup-1.0.0.exe` (28,9 MB).
+`NexIA-Core-Setup-1.0.3.exe` (28,9 MB).
 
 ## Licença
 
