@@ -20,7 +20,8 @@ module.exports = async function handler(req, res) {
   const accessKeyId = process.env.R2_ACCESS_KEY_ID;
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
   const bucket = process.env.R2_BUCKET || "nexiacore";
-  const key = process.env.R2_KEY || "NexIA-Core-Setup-1.0.0.exe";
+  const key = process.env.R2_KEY || "NexIA-Core-Setup-1.0.1.exe";
+  const filename = key.split("/").pop() || "NexIA-Core-Setup.exe";
   if (!account || !accessKeyId || !secretAccessKey) {
     res.status(503).json({ error: "Download do trial ainda não configurado." });
     return;
@@ -36,7 +37,7 @@ module.exports = async function handler(req, res) {
       Bucket: bucket,
       Key: key,
       ResponseContentType: "application/x-msdownload",
-      ResponseContentDisposition: 'attachment; filename="NexIA-Core-Setup-1.0.0.exe"',
+      ResponseContentDisposition: `attachment; filename="${filename}"`,
     });
     const url = await getSignedUrl(client, command, { expiresIn: 3600 });
     res.statusCode = 302;
