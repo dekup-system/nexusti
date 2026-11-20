@@ -231,7 +231,7 @@
             <div class="bento-card__text">
               <span class="tag">Descoberta</span>
               <h3>Uma varredura.<br />A rede inteira.</h3>
-              <p>Combinação de protocolos para não depender de um único sinal. O modo passivo observa sem gerar tráfego novo; o ativo vai além quando você autoriza.</p>
+              <p>Combinação de protocolos para não depender de um único sinal. O modo passivo evita ICMP/TCP/SNMP e não altera configurações; pode consultar DNS e ler ARP/LLDP. O ativo só entra quando você autoriza.</p>
               <a class="link" href="#produto">Ver como funciona <svg class="icon"><use href="#i-arrow"/></svg></a>
             </div>
             <div class="bento-card__visual"><img src="assets/img/topology.jpg" alt="Ilustração de nós de rede conectados em bronze sobre fundo escuro" loading="lazy" /></div>
@@ -408,11 +408,11 @@
         <div class="safety__copy">
           <p class="kicker">Segurança e limites</p>
           <h2>Poderoso por dentro.<br /><em>Contido por padrão.</em></h2>
-          <p>O NexIA Core foi desenhado para operar em redes reais, com regras claras. O padrão é não gerar tráfego novo, não alterar configuração e não explorar falhas.</p>
+          <p>O NexIA Core foi desenhado para operar em redes reais, com regras claras. O padrão é não alterar configuração e não explorar falhas. A descoberta passiva é conservadora, mas não silenciosa: pode emitir consultas DNS e ler ARP/LLDP. ICMP, TCP, SNMP, traceroute e TLS são tráfego novo e ficam para ações explicitamente autorizadas.</p>
           <div class="safety__badge"><svg class="icon"><use href="#i-shield"/></svg><span><strong>Princípio de operação</strong><small>observar, evidendar, recomendar — nunca explorar</small></span></div>
         </div>
         <ul class="guards">
-          <li><span>01</span><div><h3>Passivo por padrão</h3><p>Primeiro escuta. O modo ativo só entra com autorização explícita.</p></div></li>
+          <li><span>01</span><div><h3>Passivo por padrão</h3><p>Evita ICMP/TCP/SNMP por padrão. Consultas DNS e leitura ARP/LLDP são mínimas e declaradas; o modo ativo exige autorização.</p></div></li>
           <li><span>02</span><div><h3>Escopo limitado</h3><p>Máximo /22 por execução, com rejeição de redes amplas e adaptadores virtuais.</p></div></li>
           <li><span>03</span><div><h3>Sem exploit</h3><p>Nada de força bruta, DoS, spoofing ou alteração de configuração.</p></div></li>
           <li><span>04</span><div><h3>Dados locais</h3><p>SQLite, API em 127.0.0.1 e relatórios na própria máquina.</p></div></li>
